@@ -59,7 +59,7 @@ def generateDistances(n):
     -5 e -1 per una volta
      5 e  1 per due volte
     -5 e -1 per tre volte etc.
-    Per risolvere il problema si puo' quindi generare una lista contenente le distanze dal centro in O(n)
+    Per risolvere il problema si puo' quindi generare una lista contenente le distanze dal centro
     e ricavare il risultato in O(1) con center + lista[i - 1]
     """
     countN = 1
@@ -81,19 +81,20 @@ def generateDistances(n):
     return lista[:n**2]
 
 
-def spiral(listaDistanze, n, i):
+def spiral(n, i):
+    listDistances = generateDistances(n)
     center = (n**2 + 1) / 2
     if i == 0:
         return center
-    return center + listaDistanze[i - 1]
+    return center + listDistances[i - 1]
 
 
 if __name__ == '__main__':
-    # per eseguire lo script:
+    # per eseguire lo script
     # python spiral.py 5 25
     args = sys.argv
     n = int(args[1])
     i = int(args[2])
     distances = generateDistances(n)
     print "Distanze dal centro ", distances
-    print "n: ", n, "i: ", i, " result: ", spiral(distances, n, i)
+    print "n: ", n, "i: ", i, " result: ", spiral(n, i)
